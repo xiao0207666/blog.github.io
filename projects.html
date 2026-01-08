@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的作品集 | 项目展示</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- 自定义Tailwind配置 -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6", // 主色调：蓝色
+              secondary: "#64748b", // 次要色调：浅灰蓝
+              dark: "#1e293b", // 深色
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .card-shadow {
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .filter-active {
+          @apply bg-primary text-white;
+        }
+        .grid-auto-fit {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans text-dark">
+    <!-- 任务1：全局导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <nav
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-primary">MyPortfolio</a>
+
+        <!-- 移动端菜单按钮 -->
+        <button id="menuBtn" class="md:hidden text-dark text-xl">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- 导航菜单 -->
+        <ul id="navMenu" class="hidden md:flex space-x-8">
+          <li>
+            <a href="index.html" class="hover:text-primary transition-colors">首页</a>
+          </li>
+          <li>
+            <a href="#projects" class="text-primary font-medium">作品集</a>
+          </li>
+          <li>
+            
+      <!-- 移动端展开菜单 -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white px-4 py-2 shadow-lg"
+      >
+        <ul class="space-y-3 py-2">
+          <li>
+            <a href="#" class="block hover:text-primary transition-colors"
+              >首页</a
+            >
+          </li>
+          <li>
+            <a href="#projects" class="block text-primary font-medium"
+              >作品集</a
+            >
+          </li>
+          <li>
+            <a href="#" class="block hover:text-primary transition-colors"
+              >关于我</a
+            >
+          </li>
+          <li>
+            <a href="#" class="block hover:text-primary transition-colors"
+              >联系我</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <!-- 页面标题 -->
+      <section class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">我的项目作品集</h1>
+        <p class="text-secondary max-w-2xl mx-auto">
+          这里展示了我在不同阶段开发的项目，涵盖Web应用、移动端、课程设计等多个方向
+        </p>
+      </section>
+
+      <!-- 任务2：项目筛选分类 -->
+      <section
+        id="projectFilters"
+        class="mb-8 flex flex-wrap justify-center gap-2"
+      >
+        <button
+          class="filter-btn filter-active px-4 py-2 rounded-full border border-primary transition-colors"
+          data-filter="all"
+        >
+          全部项目
+        </button>
+        <button
+          class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:border-primary transition-colors"
+          data-filter="web"
+        >
+          Web应用
+        </button>
+        <button
+          class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:border-primary transition-colors"
+          data-filter="mobile"
+        >
+          移动端
+        </button>
+        <button
+          class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:border-primary transition-colors"
+          data-filter="course"
+        >
+          课程设计
+        </button>
+        <button
+          class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:border-primary transition-colors"
+          data-filter="other"
+        >
+          其他项目
+        </button>
+      </section>
+
+      <!-- 任务3：项目卡片网格 -->
+      <section id="projects" class="grid grid-auto-fit gap-8">
+        <!-- 项目卡片1：Web应用 -->
+        <div
+          class="project-card bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow"
+          data-category="web"
+        >
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://picsum.photos/600/400?random=1"
+              alt="电商网站项目封面"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">电商网站前端开发</h3>
+            <p class="text-secondary mb-4 line-clamp-2">
+              基于React开发的响应式电商网站，包含商品展示、购物车、订单管理等核心功能，适配PC和移动端。
+            </p>
+            <!-- 技术栈标签 -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >React</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Tailwind CSS</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Axios</span
+              >
+            </div>
+            <!-- 项目链接 -->
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> 在线演示
+              </a>
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fab fa-github mr-1"></i> 源码
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目卡片2：移动端 -->
+        <div
+          class="project-card bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow"
+          data-category="mobile"
+        >
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://picsum.photos/600/400?random=2"
+              alt="天气APP封面"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">天气APP移动端开发</h3>
+            <p class="text-secondary mb-4 line-clamp-2">
+              使用Flutter开发的跨平台天气应用，支持实时天气查询、未来7天预报、空气质量监测等功能。
+            </p>
+            <!-- 技术栈标签 -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Flutter</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Dart</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >API集成</span
+              >
+            </div>
+            <!-- 项目链接 -->
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> 在线演示
+              </a>
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fab fa-github mr-1"></i> 源码
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目卡片3：课程设计 -->
+        <div
+          class="project-card bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow"
+          data-category="course"
+        >
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://picsum.photos/600/400?random=3"
+              alt="学生管理系统封面"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">学生信息管理系统</h3>
+            <p class="text-secondary mb-4 line-clamp-2">
+              基于Spring Boot +
+              Vue的前后端分离项目，实现学生信息的增删改查、成绩管理、班级管理等功能。
+            </p>
+            <!-- 技术栈标签 -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Spring Boot</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Vue.js</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >MySQL</span
+              >
+            </div>
+            <!-- 项目链接 -->
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> 在线演示
+              </a>
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fab fa-github mr-1"></i> 源码
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目卡片4：其他项目 -->
+        <div
+          class="project-card bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-shadow"
+          data-category="other"
+        >
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://picsum.photos/600/400?random=4"
+              alt="个人博客封面"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">个人博客系统</h3>
+            <p class="text-secondary mb-4 line-clamp-2">
+              使用Next.js开发的静态博客网站，支持Markdown文章编辑、标签分类、暗黑模式切换等功能。
+            </p>
+            <!-- 技术栈标签 -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >Next.js</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >TypeScript</span
+              >
+              <span class="px-2 py-1 bg-blue-100 text-primary text-xs rounded"
+                >MDX</span
+              >
+            </div>
+            <!-- 项目链接 -->
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> 在线演示
+              </a>
+              <a
+                href="#"
+                class="flex items-center text-primary hover:text-blue-700 transition-colors"
+              >
+                <i class="fab fa-github mr-1"></i> 源码
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 任务4：全局页脚 -->
+    <footer class="bg-dark text-white py-12 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">MyPortfolio</h3>
+            <p class="text-gray-400 mb-4">
+              专注于前端开发与全栈应用构建，持续学习与创作优质项目
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-gitee text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">快速链接</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors">首页</a>
+              </li>
+              <li>
+                <a href="#projects" class="hover:text-white transition-colors"
+                  >作品集</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >关于我</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >联系我</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">联系我</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex items-center gap-2">
+                <i class="fas fa-envelope"></i>
+                <span>3514659106@qq.com</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-phone"></i>
+                <span>173-2046-XXXX</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>重庆市两江新区</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500"
+        >
+          <p>&copy; 2026 MyPortfolio. 保留所有权利。</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript 功能实现 -->
+    <script>
+      // 1. 移动端菜单切换
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        // 切换菜单图标
+        const icon = menuBtn.querySelector("i");
+        if (icon.classList.contains("fa-bars")) {
+          icon.classList.replace("fa-bars", "fa-times");
+        } else {
+          icon.classList.replace("fa-times", "fa-bars");
+        }
+      });
+
+      // 2. 项目筛选功能
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // 移除所有按钮的激活状态
+          filterBtns.forEach((b) => b.classList.remove("filter-active"));
+          // 添加当前按钮的激活状态
+          btn.classList.add("filter-active");
+
+          const filter = btn.getAttribute("data-filter");
+
+          // 筛选项目卡片
+          projectCards.forEach((card) => {
+            const category = card.getAttribute("data-category");
+            if (filter === "all" || category === filter) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // 3. 平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+            });
+            // 移动端菜单自动关闭
+            mobileMenu.classList.add("hidden");
+            const icon = menuBtn.querySelector("i");
+            icon.classList.replace("fa-times", "fa-bars");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

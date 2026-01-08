@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>首页 | 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2563eb",
+              secondary: "#4f46e5",
+              dark: "#1e293b",
+              light: "#f8fafc",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+        .text-shadow {
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card-hover {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans text-gray-800">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center space-x-2">
+            <i class="fa-solid fa-feather-pointed text-primary text-2xl"></i>
+            <span class="text-xl font-bold text-dark">Litianying</span>
+          </a>
+
+          <!-- 主导航 - 桌面端 -->
+          <nav class="hidden md:flex space-x-8">
+            <a href="index.html" class="text-primary font-medium">首页</a>
+            <a
+              href="about.html"
+              class="text-gray-600 hover:text-primary transition-colors"
+              >文章</a
+            >
+            <a
+              href="blog.html"
+              class="text-gray-600 hover:text-primary transition-colors"
+              >关于我</a
+            >
+            <a
+              href="projects.html"
+              class="text-gray-600 hover:text-primary transition-colors"
+              >作品集</a
+            >
+          </nav>
+
+          <!-- 移动端汉堡菜单 -->
+          <div class="md:hidden">
+            <button id="menuBtn" class="text-gray-600 hover:text-primary">
+              <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 移动端菜单面板 -->
+      <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-3 space-y-3">
+          <a href="index.html" class="block py-2 text-primary font-medium"
+            >首页</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 text-gray-600 hover:text-primary"
+            >关于</a
+          >
+          <a
+            href="blog.html"
+            class="block py-2 text-gray-600 hover:text-primary"
+            >博客</a
+          >
+          <a
+            href="projects.html"
+            class="block py-2 text-gray-600 hover:text-primary"
+            >项目</a
+          >
+          <a
+            href="contact.html"
+            class="block py-2 text-gray-600 hover:text-primary"
+            >联系</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <!-- 个人信息区 -->
+      <section class="text-center mb-16 pt-6">
+        <div class="inline-block relative mb-6">
+          <img
+            src="me.jpg"
+            alt="个人头像"
+            class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
+          />
+          <span
+            class="absolute bottom-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full"
+          >
+            博主
+          </span>
+        </div>
+        <h1
+          class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark mb-3 text-shadow"
+        >
+          肖少坤
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          热爱前端与设计的学习者 | 记录成长 · 分享知识 · 探索未来
+        </p>
+
+        <!-- 社交链接 -->
+        <div class="flex justify-center space-x-5 mt-6">
+          <a
+            href="https://github.com/litianyinglty"
+            target="_blank"
+            class="text-gray-500 hover:text-primary text-xl transition-colors"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            class="text-gray-500 hover:text-primary text-xl transition-colors"
+          >
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            class="text-gray-500 hover:text-primary text-xl transition-colors"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="mailto:example@mail.com"
+            class="text-gray-500 hover:text-primary text-xl transition-colors"
+          >
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- 精选文章展示区 -->
+      <section class="mb-18">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold text-dark">精选文章</h2>
+          <a
+            href="blog.html"
+            class="text-primary hover:text-secondary flex items-center"
+          >
+            查看全部 <i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- 文章卡片1 -->
+          <article
+            class="bg-white rounded-xl shadow-md overflow-hidden card-hover"
+          >
+            <img
+              src="https://picsum.photos/id/0/600/400"
+              alt="文章封面"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-sm text-gray-500">2026-01-05</span>
+                <span
+                  class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                  >前端</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-2">如何从零搭建一个现代化博客</h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                本文将带你了解如何使用 HTML、Tailwind CSS 和 JavaScript
+                构建一个响应式、美观的个人博客网站。
+              </p>
+              <a
+                href="post.html"
+                class="inline-flex items-center text-primary font-medium"
+              >
+                阅读更多 <i class="fa-solid fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- 文章卡片2 -->
+          <article
+            class="bg-white rounded-xl shadow-md overflow-hidden card-hover"
+          >
+            <img
+              src="https://picsum.photos/id/160/600/400"
+              alt="文章封面"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-sm text-gray-500">2026-01-03</span>
+                <span
+                  class="bg-purple-100 text-purple-600 text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                  >JavaScript</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-2">深入理解 JavaScript 闭包</h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                闭包是 JavaScript
+                中最重要的概念之一，本文将通过示例带你彻底搞懂闭包的工作原理和使用场景。
+              </p>
+              <a
+                href="post.html"
+                class="inline-flex items-center text-primary font-medium"
+              >
+                阅读更多 <i class="fa-solid fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- 文章卡片3 -->
+          <article
+            class="bg-white rounded-xl shadow-md overflow-hidden card-hover"
+          >
+            <img
+              src="https://picsum.photos/id/119/600/400"
+              alt="文章封面"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-sm text-gray-500">2026-01-01</span>
+                <span
+                  class="bg-green-100 text-green-600 text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                  >CSS</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-2">Tailwind CSS 实用技巧合集</h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                分享一些在实际项目中非常实用的 Tailwind CSS
+                使用技巧，帮助你更高效地构建界面。
+              </p>
+              <a
+                href="post.html"
+                class="inline-flex items-center text-primary font-medium"
+              >
+                阅读更多 <i class="fa-solid fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 技能/兴趣标签云 -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-dark mb-6 text-center">
+          技能 & 兴趣
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <span
+            class="px-4 py-2 bg-blue-100 text-primary rounded-full font-medium"
+            >HTML5</span
+          >
+          <span
+            class="px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full font-medium"
+            >CSS3</span
+          >
+          <span
+            class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full font-medium"
+            >JavaScript</span
+          >
+          <span
+            class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-medium"
+            >TypeScript</span
+          >
+          <span
+            class="px-4 py-2 bg-green-100 text-green-700 rounded-full font-medium"
+            >React</span
+          >
+          <span
+            class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full font-medium"
+            >Vue</span
+          >
+          <span
+            class="px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium"
+            >Tailwind CSS</span
+          >
+          <span
+            class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium"
+            >UI/UX 设计</span
+          >
+          <span
+            class="px-4 py-2 bg-pink-100 text-pink-700 rounded-full font-medium"
+            >摄影</span
+          >
+          <span
+            class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-medium"
+            >旅行</span
+          >
+          <span
+            class="px-4 py-2 bg-teal-100 text-teal-700 rounded-full font-medium"
+            >阅读</span
+          >
+          <span
+            class="px-4 py-2 bg-lime-100 text-lime-700 rounded-full font-medium"
+            >音乐</span
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-gray-300 py-10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <div class="flex items-center space-x-2 mb-2">
+              <i class="fa-solid fa-feather-pointed text-primary text-xl"></i>
+              <span class="text-xl font-bold text-white">Litianying</span>
+            </div>
+            <p class="text-sm text-gray-400">
+              记录学习与生活的点滴，分享前端技术与个人成长。
+            </p>
+          </div>
+
+          <!-- 页脚社交链接 -->
+          <div class="flex space-x-5">
+            <a
+              href="https://github.com/litianyinglty"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fa-brands fa-twitter text-xl"></i>
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fa-brands fa-linkedin text-xl"></i>
+            </a>
+            <a
+              href="mailto:example@mail.com"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fa-solid fa-envelope text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-sm text-gray-400">
+            &copy; 2026 Litianying. All rights reserved.
+          </p>
+          <p class="text-sm text-gray-400 mt-2 md:mt-0">
+            备案号：粤ICP备12345678号
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 汉堡菜单脚本 -->
+    <script>
+      document.getElementById("menuBtn").addEventListener("click", function () {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
